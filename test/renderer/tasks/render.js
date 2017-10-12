@@ -68,7 +68,7 @@ describe('Task: render', () => {
         code = 0;
 
         render(project).should.be.fulfilled.then((prj) => {
-            prj.should.have.property('resultname').and.be.eql('result.mp4') 
+            prj.should.have.property('resultname').and.be.eql('result.mov') 
         }).should.notify(done);
     });
 
@@ -89,7 +89,7 @@ describe('Task: render', () => {
             spawned.args.should.be.deep.equal([
                 '-comp',    'mycomp',
                 '-project', path.join( process.cwd(), 'test', 'work' ),
-                '-output',  path.join( process.cwd(), 'test', 'result.mp4' ) 
+                '-output',  path.join( process.cwd(), 'test', 'result.mov' ) 
             ]);
         }).should.notify(done);
     });
@@ -109,7 +109,7 @@ describe('Task: render', () => {
             spawned.args.should.be.deep.equal([
                 '-comp',    'mycomp',
                 '-project', path.join( process.cwd(), 'test', 'work' ),
-                '-output',  path.join( process.cwd(), 'test', 'result.mp4' ),
+                '-output',  path.join( process.cwd(), 'test', 'result.mov' ),
                 '-OMtemplate', 'testformat',
                 '-RStemplate', 'testtemplate',
                 '-s', 231,
@@ -128,7 +128,7 @@ describe('Task: render', () => {
             spawned.args.should.be.deep.equal([
                 '-comp',    'mycomp',
                 '-project', path.join( process.cwd(), 'test', 'work' ),
-                '-output',  path.join( process.cwd(), 'test', 'result.mp4' ),
+                '-output',  path.join( process.cwd(), 'test', 'result.mov' ),
                 '-mp'
             ]);
         }).should.notify(done);
@@ -143,7 +143,7 @@ describe('Task: render', () => {
             spawned.args.should.be.deep.equal([
                 '-comp',    'mycomp',
                 '-project', path.join( process.cwd(), 'test', 'work' ),
-                '-output',  path.join( process.cwd(), 'test', 'result.mp4' ),
+                '-output',  path.join( process.cwd(), 'test', 'result.mov' ),
                 '-mem_usage', 25, 100
             ]);
         }).should.notify(done);

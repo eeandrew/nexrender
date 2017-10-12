@@ -18,7 +18,7 @@ module.exports = function(project) {
         let aedata = [];
         let params = [];
 
-        let outext = (project.settings && project.settings.outputExt) ? project.settings.outputExt : 'mp4';
+        let outext = (project.settings && project.settings.outputExt) ? project.settings.outputExt : 'mov';
 
         // set default project result file name
         project.resultname = 'result' + '.' + outext;

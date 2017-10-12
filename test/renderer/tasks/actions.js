@@ -20,13 +20,13 @@ var actions = rewire('../../../renderer/tasks/actions.js');
 describe('Task: actions', () => {
     let project = {
         uid: 'work',
-        resultname: 'result.mp4',
+        resultname: 'result.mov',
         workpath: path.join('test', 'work')
     };
 
     beforeEach(() => {
         fs.mkdirSync(path.join('test', 'work'));
-        fs.writeFileSync(path.join('test', 'work', 'result.mp4'));
+        fs.writeFileSync(path.join('test', 'work', 'result.mov'));
     });
 
     afterEach(() => {
@@ -42,18 +42,18 @@ describe('Task: actions', () => {
 
     it('should move resulted file from temp to results', (done) => {
         actions(project).should.be.fulfilled.then(() => {
-            path.join('test', 'temp', 'result.mp4').should.not.be.path();
-            path.join('test', 'results', project.uid + '_result.mp4').should.be.a.path();
+            path.join('test', 'temp', 'result.mov').should.not.be.path();
+            path.join('test', 'results', project.uid + '_result.mov').should.be.a.path();
         }).should.notify(done);
     });
 
     it('should override exsited file in result folder', (done) => {
         fs.mkdirSync(path.join('test', 'results'));
-        fs.writeFileSync(path.join('test', 'results', 'work_result.mp4'));
+        fs.writeFileSync(path.join('test', 'results', 'work_result.mov'));
 
         actions(project).should.be.fulfilled.then(() => {
-            path.join('test', 'temp', 'result.mp4').should.not.be.path();
-            path.join('test', 'results', project.uid + '_result.mp4').should.be.a.path();
+            path.join('test', 'temp', 'result.mov').should.not.be.path();
+            path.join('test', 'results', project.uid + '_result.mov').should.be.a.path();
         }).should.notify(done);
     });
 

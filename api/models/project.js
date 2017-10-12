@@ -9,8 +9,8 @@ const DEFAULT_PROJECT_TYPE  = 'default';
 
 const TICKER_INTERVAL       = 60 * 1000 || process.env.API_UPDATE_INTERVAL; // 1 minute
 
-const AE_OUTPUT_MODULE      = process.env.AE_OUTPUT_MODULE || 'h264';
-const AE_OUTPUT_EXT         = 'mp4';
+const AE_OUTPUT_MODULE      = process.env.AE_OUTPUT_MODULE || 'Lossless';
+const AE_OUTPUT_EXT         = 'mov';
 
 
 class Project {
