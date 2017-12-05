@@ -3,6 +3,9 @@
 const path      = require('path');
 const fs        = require('fs-extra');
 const async     = require('async');
+var DOMParser = require('xmldom').DOMParser;
+var TheSerializer = require('xmldom').XMLSerializer;
+var fulldom = require('xmldom');
 
 function getAllExpressions(data) {
     return data.match(/\<expr bdata=\"([a-f0-9]+)\"\s*\/\>/gi);
@@ -33,35 +36,28 @@ function processTemplateFile(project, callback) {
     // read project file contents
     fs.readFile(projectName, (err, bin) => {
         if (err) return callback(err);
-
+       
         // convert to utf8 string
         let data = bin.toString('utf8');
+        // create xml
+        var xmlDoc = new DOMParser().parseFromString(data);
+        // search all scripts
+        var stringElements = xmlDoc.getElementsByTagName("string");
+        // process in xml way
 
-        // check for valid project template
-        if (data.indexOf('<?xml') !== 0) return callback(new Error('Project is not valid xml project template'));
-
-        // search for expressions
-        let expressions = getAllExpressions(data);
-
-        // check for existing expressions
-        if (expressions !== null) {
-
-            // then iterate over them
-            for (let expr of expressions) {
-
-                // extract hex from xml tag and decode it
-                let hex = expr.split('"')[1];
-                let dec = new Buffer(hex, 'hex').toString('utf8');
-    
-                // do patch and encode back to hex
-                // using regex file path pattern
-                let enc = new Buffer( replacePath( dec, replaceToPath ) ).toString('hex');
-    
-                // replace patched hex
-                data = data.replace( hex, enc );
+        for (var key=0;key<stringElements.length;key++){
+            var elm= stringElements[key];
+            var original = elm.textContent;
+            if (original !== "-_0_/-"){
+                elm.textContent = replacePath(original,replaceToPath);
+                if(elm.textContent != original) {
+                    console.log("changed",elm.textContent,original);
+                }
             }
         }
-        
+       
+        data = new TheSerializer().serializeToString(xmlDoc);
+ 
         // save result
         fs.writeFile(projectName, data, callback);
     });
