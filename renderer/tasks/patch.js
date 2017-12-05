@@ -48,7 +48,7 @@ function processTemplateFile(project, callback) {
         for (var key=0;key<stringElements.length;key++){
             var elm= stringElements[key];
             var original = elm.textContent;
-            if (original !== "-_0_/-"){
+            if (original.indexOf("//nex") != -1){
                 elm.textContent = replacePath(original,replaceToPath);
                 if(elm.textContent != original) {
                     console.log("changed",elm.textContent,original);
