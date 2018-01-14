@@ -1,24 +1,43 @@
 {
-  "name": "nexrender",
-  "version": "0.5.1",
-  "description": "Automate your After Effects project creation and rendering routine.",
-  "main": "index.js",
-  "bin": {
-    "nexrender": "./cli.js"
+  "_from": "git+https://github.com/leq382121/nexrender.git#master",
+  "_id": "nexrender@0.5.1",
+  "_inBundle": false,
+  "_integrity": "sha1-rgleYZsZF9EyPYfPOGZ6JZFPJOY=",
+  "_location": "/nexrender",
+  "_phantomChildren": {
+    "graceful-fs": "4.1.11",
+    "klaw": "1.3.1",
+    "path-is-absolute": "1.0.1",
+    "rimraf": "2.6.2"
   },
-  "scripts": {
-    "test": "gulp test",
-    "lint": "eslint .",
-    "coverage_upload": "CODECLIMATE_REPO_TOKEN=844102481459628ff8cbfa403603abd6841e8d9f58e0578b684e4bfe17471d3e ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec"
+  "_requested": {
+    "type": "git",
+    "raw": "nexrender@git+https://github.com/leq382121/nexrender.git#master",
+    "name": "nexrender",
+    "escapedName": "nexrender",
+    "rawSpec": "git+https://github.com/leq382121/nexrender.git#master",
+    "saveSpec": "git+https://github.com/leq382121/nexrender.git#master",
+    "fetchSpec": "https://github.com/leq382121/nexrender.git",
+    "gitCommittish": "master"
   },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/leq382121/nexrender.git#599435e7d8dbab1f9507d1ff35817879d585532a",
+  "_spec": "nexrender@git+https://github.com/leq382121/nexrender.git#master",
+  "_where": "C:\\Users\\Liutauras\\Desktop\\Internet Explorer\\dev\\VideoAutomation",
   "author": {
     "name": "Inlife",
     "email": "vladgritsenko@gmail.com",
     "url": "https://github.com/inlife"
   },
-  "repository": "inlife/nexrender",
-  "license": "MIT",
+  "bin": {
+    "nexrender": "./cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/inlife/nexrender/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "async": "^2.0.0-rc.6",
     "body-parser": "^1.15.0",
@@ -35,6 +54,8 @@
     "request": "^2.69.0",
     "shortid": "^2.2.4"
   },
+  "deprecated": false,
+  "description": "Automate your After Effects project creation and rendering routine.",
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
@@ -47,5 +68,20 @@
     "jshint": "^2.9.1",
     "mocha": "^2.4.5",
     "rewire": "^2.5.1"
-  }
+  },
+  "homepage": "https://github.com/inlife/nexrender#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "nexrender",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inlife/nexrender.git"
+  },
+  "scripts": {
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- -R spec",
+    "coverage_upload": "CODECLIMATE_REPO_TOKEN=844102481459628ff8cbfa403603abd6841e8d9f58e0578b684e4bfe17471d3e ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info",
+    "lint": "eslint .",
+    "test": "gulp test"
+  },
+  "version": "0.5.1"
 }

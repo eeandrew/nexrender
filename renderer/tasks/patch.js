@@ -49,9 +49,11 @@ function processTemplateFile(project, callback) {
             var elm= stringElements[key];
             var original = elm.textContent;
             if (original.indexOf("//nex") != -1){
-                elm.textContent = replacePath(original,replaceToPath);
+                elm.textContent = replacePath(original.replace('//nex',''),replaceToPath)
                 if(elm.textContent != original) {
-                    console.log("changed",elm.textContent,original);
+                    console.log("#----");
+                    console.log("original: ",elm.textContent,original);
+                    console.log("changed to:",elm.textContent);
                 }
             }
         }
